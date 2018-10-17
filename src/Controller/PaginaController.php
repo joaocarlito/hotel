@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PaginaController extends AbstractController
 {
     /**
-     * @Route("/pagina", name="pagina")
+     * @Route("/", name="index")
      */
     public function index()
     {
