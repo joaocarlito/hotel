@@ -27,4 +27,28 @@ class PaginaController extends AbstractController
         //var_dump($request);
         return $this->render('pagina/contato.html.twig');
     }
+    
+    /**
+     * @Route("/reservar", name="reservar")
+     */
+    public function reservar()
+    {
+        return $this->render('pagina/reservar.html.twig');
+    }
+    
+    /**
+     * @Route("/login", name="login")
+     */
+    public function login()
+    {
+        return $this->render('pagina/login.html.twig');
+    }
+    
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function admin()
+    {
+        return $this->render('pagina/admin.html.twig');
+    }
 }
