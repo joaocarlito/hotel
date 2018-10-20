@@ -15,7 +15,7 @@ class QuartoType extends AbstractType
             ->add('tipo')
             ->add('nome')
             ->add('descricao')
-            ->add('fotos')
+            //->add('fotos')
             ->add('diaria')
         ;
     }

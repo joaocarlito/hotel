@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,6 +45,23 @@ class Quarto
      * @ORM\Column(type="decimal", precision=6, scale=2)
      */
     private $diaria;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reserva", mappedBy="quarto")
+     */
+    private $reservas;
+
+
+    public function __toString()
+    {
+        return $this->nome;
+    }
+
+
+    public function __construct()
+    {
+        $this->reservas = new ArrayCollection();
+    }
 
     
     
@@ -112,9 +131,36 @@ class Quarto
         return $this;
     }
 
+    /**
+     * @return Collection|Reserva[]
+     */
+    public function getReservas(): Collection
+    {
+        return $this->reservas;
+    }
 
-    
-    
-    
+    public function addReserva(Reserva $reserva): self
+    {
+        if (!$this->reservas->contains($reserva)) {
+            $this->reservas[] = $reserva;
+            $reserva->setQuarto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReserva(Reserva $reserva): self
+    {
+        if ($this->reservas->contains($reserva)) {
+            $this->reservas->removeElement($reserva);
+            // set the owning side to null (unless already changed)
+            if ($reserva->getQuarto() === $this) {
+                $reserva->setQuarto(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
 
