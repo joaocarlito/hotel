@@ -1,4 +1,19 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+   {# {{ form_widget(form) }}  #}
+
+    {{ form_row(form.nome) }} {#para fazer comentários#}
+    {{ form_row(form.diaria) }}
+    {{ form_row(form.tipo) }}
+
+
+<div class="form-group">
+    {{ form_label(form.descricao) }}
+    {{ form_widget(form.descricao) }}
+    {{ form_errors(form.descricao) }}
+</div>
+
+
+
+    <button class="btn btn-success">{{ button_label|default('Salvar') }}</button>
+
 {{ form_end(form) }}
