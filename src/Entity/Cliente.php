@@ -9,6 +9,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -25,16 +26,28 @@ class Cliente
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Type(
+     *     type="alpha",
+     *     message="O nome {{ value }} não é válido {{ type }}."
+     * )
      */
     private $nome;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Type(
+     *     type="alpha",
+     *     message="O sobrenome {{ value }} não é válido {{ type }}."
+     * )
      */
     private $sobrenome;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Email(
+     *     message = "O email '{{ value }}' não é válido.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
