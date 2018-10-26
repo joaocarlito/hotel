@@ -58,8 +58,9 @@
     </div>
 
     <div class="container">
-        <div class="card-deck mb-3 text-center">
+        <div class="mb-3 text-center">
 
+            <form action="{{ path('pesquisa')}}" method="post">
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">Selecione a data</h4>
@@ -74,7 +75,7 @@
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control">
+                        <select class="form-control" name="quantidade">
                             <option value="0" > -- Quantidade de Hóspedes --</option>
                             <option value="0" > 1 </option>
                             <option value="0" > 2 </option>
@@ -85,10 +86,10 @@
                     </div>
 
 
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Pesquisar Disponibilidade</button>
+                    <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Pesquisar Disponibilidade</button>
                 </div>
             </div>
-
+            </form>
         </div>
 
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
@@ -132,5 +133,6 @@
 
             </div>
         </footer>
+
     </div>
 {% endblock %}
