@@ -9,10 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity()
  */
-
 class Quarto 
 {
-     /**
+    /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -27,7 +26,7 @@ class Quarto
     private $tipo;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     private $nome;
     
@@ -51,12 +50,10 @@ class Quarto
      */
     private $reservas;
 
-
     public function __toString()
     {
         return $this->nome;
     }
-
 
     public function __construct()
     {
@@ -64,57 +61,57 @@ class Quarto
     }
 
     
-    
-    
-    function getId() 
+    public function getId() 
     {
         return $this->id;
     }
 
-    function getTipo() 
+    public function getTipo() 
     {
         return $this->tipo;
     }
 
-    function getNome() 
+    public function getNome() 
     {
         return $this->nome;
     }
 
-    function getDescricao() 
+    public function getDescricao() 
     {
         return $this->descricao;
     }
 
-    function getFotos()
+    public function getFotos()
     {
         return $this->fotos;
     }
 
-    function getDiaria() 
+    public function getDiaria() 
     {
         return $this->diaria;
     }
+   
 
-    function setTipo($tipo) 
+    public function setTipo($tipo) 
     {
         $this->tipo = $tipo;
         return $this;
     }
 
-    function setNome($nome) 
+    public function setNome($nome) 
     {
         $this->nome = $nome;
         return $this;
     }
 
-    function setDescricao($descricao) 
+    public function setDescricao($descricao) 
     {
         $this->descricao = $descricao;
         return $this;
     }
 
-    function setFotos($fotos) 
+    
+    public function setFotos($fotos) 
     {
         $this->fotos = $fotos;
         return $this;
@@ -125,7 +122,7 @@ class Quarto
      * @param float $diaria
      * @return $this
      */
-    function setDiaria($diaria) 
+    public function setDiaria($diaria) 
     {
         $this->diaria = $diaria;
         return $this;
@@ -161,6 +158,6 @@ class Quarto
 
         return $this;
     }
-
+    
+    
 }
-

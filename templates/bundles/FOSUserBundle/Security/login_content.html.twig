@@ -3,7 +3,6 @@
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
-
 <style>
 
     .form-signin {
@@ -35,7 +34,6 @@
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
-
 </style>
 
 <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
@@ -44,16 +42,16 @@
     {% endif %}
 
     <h1 class="h3 mb-3 font-weight-normal">Logar</h1>
-
     <label for="username" class="sr-only">Usuário</label>
     <input class="form-control" type="text" id="username" placeholder="Usuário" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
 
-    <label for="password" class="sr-only"></label>
-    <input class="form-control" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+    <label for="password" class="sr-only">Senha</label>
+    <input class="form-control" type="password" placeholder="senha" id="password" name="_password" required="required" autocomplete="current-password" />
+
 
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember-me" name="remember_me" value="on"> Mantenha-me conectado
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Me mantenha logado
         </label>
     </div>
 

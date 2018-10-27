@@ -1,14 +1,16 @@
-{% extends 'base.admin.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Quarto index{% endblock %}
 
 {% block body %}
     <div class="container">
-    
-        <h1>Listagem de Quartos <a href="{{ path('quarto_new') }}" class="btn btn-primary">Cadastrar</a>
-</h1>
-    
         
+        <h1 >Listagem de Quartos
+            <a href="{{ path('quarto_new') }}" class="btn btn-primary">Cadastrar</a>
+        </h1>
+    
+    
+
     <table class="table">
         <thead>
             <tr>
@@ -31,8 +33,8 @@
                 <td>{{ quarto.fotos ? quarto.fotos|join(', ') : '' }}</td>
                 <td>{{ quarto.diaria }}</td>
                 <td>
-                    <a href="{{ path('quarto_show', {'id': quarto.id}) }}" class="btn btn-info"> <i data-feather="eye"></i> </a>
-                    <a href="{{ path('quarto_edit', {'id': quarto.id}) }}" class="btn btn-success"> <i data-feather="edit"></i> </a>
+                    <a href="{{ path('quarto_show', {'id': quarto.id}) }}" class="btn btn-info"><i data-feather="eye"></i></a>
+                    <a href="{{ path('quarto_edit', {'id': quarto.id}) }}" class="btn btn-success"><i data-feather="edit"></i></a>
                 </td>
             </tr>
         {% else %}

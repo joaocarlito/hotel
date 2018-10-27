@@ -16,6 +16,7 @@ class QuartoController extends AbstractController
 {
     /**
      * @Route("/", name="quarto_index", methods="GET")
+     * @return Response 
      */
     public function index(): Response
     {
@@ -23,6 +24,7 @@ class QuartoController extends AbstractController
             ->getRepository(Quarto::class)
             ->findAll();
 
+            
         return $this->render('quarto/index.html.twig', ['listagem' => $quartos]);
     }
 
@@ -32,6 +34,8 @@ class QuartoController extends AbstractController
     public function new(Request $request): Response
     {
         $quarto = new Quarto();
+        //$quarto->setDiaria(123.44);
+
         $form = $this->createForm(QuartoType::class, $quarto);
         $form->handleRequest($request);
 

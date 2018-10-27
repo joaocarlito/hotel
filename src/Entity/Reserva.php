@@ -18,14 +18,14 @@ class Reserva
     private $id;
 
     /**
-     * @ORM\Column(type="date")
-     * @Assert\GreaterThan("now", message="O dia escolhido tem que ser maior que hoje."                                                                                                                                              )
+     * @ORM\Column(type="datetime")
+     * @Assert\GreaterThan("now", message="O dia escolhido tem de ser maior que hoje")
      */
     private $dataEntrada;
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\GreaterThan("tomorrow", message="O dia escolhido tem que ser maior que amanhã.")
+     * @Assert\GreaterThan("tomorrow", message="O dia escolhido tem de ser maior que amanhã")
      */
     private $dataSaida;
 

@@ -11,27 +11,25 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/reserva")
+ * @Route("/admin/reserva")
  */
 class ReservaController extends AbstractController
 {
     /**
      * @Route("/", name="reserva_index", methods="GET")
      */
-    public function index(ReservaRepository $reservaRepository, Request $request): Response
+    public function index( ReservaRepository $reservaRepository, Request $request): Response
     {
 
         $campo = $request->get("campo");
         $ordem = $request->get("ord");
 
-        $campo =($campo == null)? "dataEntrada": $campo;
-        $ordem =($ordem == null)? "ASC": $ordem;
+        $campo = ($campo == null)? "dataEntrada": $campo;
+        $ordem = ($ordem == null)? "ASC": $ordem;
 
         $reservas = $reservaRepository->findReservasAtivas($campo, $ordem);
 
         //$reservas = $reservaRepository->findBy(array("dataSaida" => $hoje), array($campo => $ordem));
-
-
 
         return $this->render('reserva/index.html.twig', ['reservas' => $reservas]);
     }
@@ -44,7 +42,6 @@ class ReservaController extends AbstractController
         $reserva = new Reserva();
         $reserva->setDataEntrada(new \DateTime());
         $reserva->setDataSaida(new \DateTime('tomorrow'));
-
 
         $form = $this->createForm(ReservaType::class, $reserva);
         $form->handleRequest($request);

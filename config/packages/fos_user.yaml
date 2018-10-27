@@ -3,5 +3,5 @@ fos_user:
   firewall_name: main
   user_class: App\Entity\Usuario
   from_email:
-    address: "sistema@aluno.com"
-    sender_name: "sistema"
+    address: "sistema@prof.com"
+    sender_name: "Sistema"

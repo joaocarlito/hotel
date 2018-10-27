@@ -15,24 +15,22 @@ class ReservaType extends AbstractType
     {
         $anos = array();
         $anoIni = date("Y");
-        $anoFim = $anoIni + 5;
-        for ($ano = $anoIni; $ano < $anoFim; $ano++)
-        {
+        $anoFim = $anoIni + 10;
+        for ($ano = $anoIni; $ano < $anoFim; $ano++) {
             $anos[] = $ano;
         }
 
-
         $builder
             ->add('dataEntrada', DateType::class, array(
-                'format' => 'dd-MMM-yyyy',
+                'format' => 'dd-MMMM-yyyy',
                 'years' => $anos
             ))
             ->add('dataSaida', DateType::class, array(
-                'format' => 'dd-MMM-yyyy',
+                'format' => 'dd-MMMM-yyyy',
                 'years' => $anos
             ))
             ->add('valorTotal', MoneyType::class, array(
-                "currency" => 'BRL'
+                "currency" => "BRL"
             ))
             ->add('observacao')
             ->add('quarto')

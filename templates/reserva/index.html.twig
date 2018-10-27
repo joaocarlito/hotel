@@ -1,4 +1,4 @@
-{% extends 'base.admin.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Reserva index{% endblock %}
 
@@ -9,12 +9,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th><a href="?campo=dataEntrada&ord=ASC"> Data Entrada </a></th>
-                <th><a href="?campo=dataSaida&ord=ASC"> Data Saida </a></th>
+                <th><a href="?campo=dataEntrada&ord=ASC"> Data Entrada</a></th>
+                <th><a href="?campo=dataSaida&ord=ASC">Data Saída</a></th>
                 <th>Valor Total</th>
                 <th>Observação</th>
                 <th>Quarto</th>
-                <th>Ações</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +27,8 @@
                 <td>{{ reserva.observacao }}</td>
                 <td>{{ reserva.quarto }}</td>
                 <td>
-                    <a href="{{ path('reserva_show', {'id': reserva.id}) }}">Mostrar</a>
-                    <a href="{{ path('reserva_edit', {'id': reserva.id}) }}">Editar</a>
+                    <a href="{{ path('reserva_show', {'id': reserva.id}) }}">show</a>
+                    <a href="{{ path('reserva_edit', {'id': reserva.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

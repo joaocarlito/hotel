@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Quarto;
 use Symfony\Component\Form\AbstractType;
+
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,7 +30,7 @@ class QuartoType extends AbstractType
             ))
             //->add('fotos')
             ->add('diaria', MoneyType::class, array(
-                "currency"=>'BRL'
+                "currency" => "BRL"
             ))
         ;
     }

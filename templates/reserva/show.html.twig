@@ -1,4 +1,4 @@
-{% extends 'base.admin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Reserva{% endblock %}
 
@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th>DataEntrada</th>
-                <td>{{ reserva.dataEntrada ? reserva.dataEntrada|date('Y-m-d') : '' }}</td>
+                <td>{{ reserva.dataEntrada ? reserva.dataEntrada|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>DataSaida</th>

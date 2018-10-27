@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aluno
- * Date: 19/10/18
- * Time: 21:33
- */
 
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
 
 /**
  * @ORM\Entity()
@@ -28,7 +21,7 @@ class Cliente
      * @ORM\Column(type="string", length=100)
      * @Assert\Type(
      *     type="alpha",
-     *     message="O nome {{ value }} não é válido {{ type }}."
+     *     message="O nome {{ value }} não é válido."
      * )
      */
     private $nome;
@@ -37,7 +30,7 @@ class Cliente
      * @ORM\Column(type="string", length=100)
      * @Assert\Type(
      *     type="alpha",
-     *     message="O sobrenome {{ value }} não é válido {{ type }}."
+     *     message="O nome {{ value }} não é válido."
      * )
      */
     private $sobrenome;
@@ -45,7 +38,7 @@ class Cliente
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\Email(
-     *     message = "O email '{{ value }}' não é válido.",
+     *     message = "O email '{{ value }}' não é valido.",
      *     checkMX = true
      * )
      */
@@ -58,7 +51,7 @@ class Cliente
 
     public function __toString()
     {
-        return $this->nome . " " . $this->sobrenome;
+       return $this->nome . " " . $this->sobrenome;
     }
 
     public function getId(): ?int
@@ -113,6 +106,4 @@ class Cliente
 
         return $this;
     }
-
-
 }

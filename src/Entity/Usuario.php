@@ -1,22 +1,30 @@
 <?php
+
 namespace App\Entity;
+
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+
+
 /**
  * @ORM\Entity
  */
 class Usuario extends BaseUser
 {
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     *
      */
     private $nome;
+
     /**
      * @return mixed
      */
@@ -24,6 +32,7 @@ class Usuario extends BaseUser
     {
         return $this->nome;
     }
+
     /**
      * @param mixed $nome
      * @return Usuario
@@ -33,4 +42,6 @@ class Usuario extends BaseUser
         $this->nome = $nome;
         return $this;
     }
+
+
 }

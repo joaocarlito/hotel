@@ -48,22 +48,20 @@ class ReservaRepository extends ServiceEntityRepository
     }
     */
 
-
     /**
-     * Retorna as reservas cuja data de saída é maior que hoje
+     * Retorna as reservas cuja data de saida é maior que hoje
      * @param string $campo - Campo de ordenação
      * @param string $ordem - ASC ou DESC
      * @return array
      */
     public function findReservasAtivas($campo, $ordem)
     {
-
         $hoje = new \DateTime('today');
 
         $query = $this->createQueryBuilder('r');
         $reservas = $query->andWhere("r.dataSaida >= :hoje")
             ->setParameter("hoje", $hoje)
-            ->addOrderBy("r.". $campo, $ordem)
+            ->addOrderBy("r.".$campo, $ordem)
             ->getQuery()
             ->execute();
 
@@ -78,8 +76,8 @@ class ReservaRepository extends ServiceEntityRepository
     public function quartosOcupados(\DateTime $dataIni, \DateTime $dataFim, $quantidade)
     {
         $query = $this->createQueryBuilder('r');
-        $quartos = $query->Where("r.dataEntrada >= :dataIni")
-            ->setParameter("dataIni" , $dataIni)
+        $quartos = $query->where("r.dataEntrada >= :dataIni")
+            ->setParameter("dataIni", $dataIni)
             ->andWhere("r.dataEntrada <= :dataFim")
             ->setParameter("dataFim", $dataFim)
             ->getQuery()

@@ -1,11 +1,13 @@
-{% extends 'base.admin.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Quarto{% endblock %}
 
 {% block body %}
-    <h1>Quarto <a href="{{ path('quarto_index') }}" class="btn btn-primary"> <i data-feather="arrow-left-circle"></i>
+    <h1>
+        <a href="{{ path('quarto_index') }}" class="btn btn-primary">
+            <i data-feather="arrow-left-circle"></i>
          </a>
-        </h1>
+        Quarto</h1>
 
     <table class="table">
         <tbody>
@@ -38,7 +40,7 @@
 
     
 
-                <a href="{{ path('quarto_edit', {'id': quarto.id}) }}"> <i data-feather="edit"></i> </a>
+    <a href="{{ path('quarto_edit', {'id': quarto.id}) }}">edit</a>
 
     {{ include('quarto/_delete_form.html.twig') }}
 {% endblock %}
