@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Cliente;
 use App\Entity\Quarto;
 use App\Entity\Reserva;
+use Symfony\Bridge\Monolog\Handler\SwiftMailerHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -84,7 +85,7 @@ class PaginaController extends AbstractController
     /**
      * @Route("/confirmar", name="confirmar_reserva")
      */
-    public function confirmar(Request $request)
+    public function confirmar(Request $request, \Swift_Mailer $mailer)
     {
 
         $nome = $request->get("firstName");
@@ -142,9 +143,29 @@ class PaginaController extends AbstractController
 
         $em->flush();
 
+        $this->enviarEmail($reserva, $mailer);
+
         return $this->render("pagina/confirmar.html.twig", array("reserva" => $reserva));
     }
-    
+
+
+    /**
+     * Envia email com a confirmação de reserva
+     * @param Reserva $reserva
+     */
+    private function enviarEmail(Reserva $reserva, \Swift_Mailer $mailer)
+    {
+            $html = $this->renderView("pagina/confirmar.html.twig", array("reserva" => $reserva));
+
+            $msg = new \Swift_Mailer();
+            $msg->addTo($reserva->getCliente()->getEmail());
+            $msg->setSubject("confirmação de Reserva");
+            $msg->addFrom("hotel@hotel.com", "Hotel Beira Mar");
+            $msg->setBody($html, 'text/html');
+
+            $mailer->send($msg);
+    }
+
 
     /**
      * 

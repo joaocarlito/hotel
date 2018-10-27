@@ -1,0 +1,66 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Usuario{% endblock %}
+
+{% block body %}
+    <h1>Usuario</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ usuario.username }}</td>
+            </tr>
+            <tr>
+                <th>UsernameCanonical</th>
+                <td>{{ usuario.usernameCanonical }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ usuario.email }}</td>
+            </tr>
+            <tr>
+                <th>EmailCanonical</th>
+                <td>{{ usuario.emailCanonical }}</td>
+            </tr>
+            <tr>
+                <th>Enabled</th>
+                <td>{{ usuario.enabled ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ usuario.salt }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ usuario.password }}</td>
+            </tr>
+            <tr>
+                <th>LastLogin</th>
+                <td>{{ usuario.lastLogin ? usuario.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ConfirmationToken</th>
+                <td>{{ usuario.confirmationToken }}</td>
+            </tr>
+            <tr>
+                <th>PasswordRequestedAt</th>
+                <td>{{ usuario.passwordRequestedAt ? usuario.passwordRequestedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ usuario.roles ? usuario.roles|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ usuario.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('usuario_index') }}">back to list</a>
+
+    <a href="{{ path('usuario_edit', {'id': usuario.id}) }}">edit</a>
+
+    {{ include('usuario/_delete_form.html.twig') }}
+{% endblock %}

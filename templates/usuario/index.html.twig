@@ -1,0 +1,41 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Usuario index{% endblock %}
+
+{% block body %}
+    <h1>Usuario index</h1>
+{{ dump(app.user) }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Enabled</th>
+                <th>LastLogin</th>
+                <th>Roles</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.enabled ? 'Yes' : 'No' }}</td>
+                <td>{{ usuario.lastLogin ? usuario.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ usuario.roles ? usuario.roles|join(', ') : '' }}</td>
+                <td>
+                    <a href="{{ path('usuario_show', {'id': usuario.id}) }}">show</a>
+                    <a href="{{ path('usuario_edit', {'id': usuario.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('usuario_new') }}">Create new</a>
+{% endblock %}
